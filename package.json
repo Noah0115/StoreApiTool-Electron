@@ -2,14 +2,40 @@
   "name": "store-api-tool-electron",
   "version": "1.0.0",
   "description": "Microsoft Store 文件直链查询工具（Electron 版）",
+  "author": "Noah0115",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build:win": "electron-builder --win portable"
   },
   "engines": {
     "node": ">=20 <24"
   },
   "devDependencies": {
-    "electron": "^37.1.0"
+    "electron": "^37.1.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.noah0115.storeapitool",
+    "productName": "StoreApiTool",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
   }
 }
