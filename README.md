@@ -2,6 +2,10 @@
 
 一个基于 Electron 的 Microsoft Store 文件直链查询工具。
 
+## 界面预览
+
+![StoreApiTool 界面预览](docs/show1.png)
+
 ## 运行环境
 
 - 当前开发环境 Node.js 版本：`v23.11.1`
