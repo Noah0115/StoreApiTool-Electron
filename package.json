@@ -21,6 +21,7 @@
     "directories": {
       "output": "release"
     },
+    "artifactName": "StoreApiTool.${ext}",
     "files": [
       "main.js",
       "preload.js",
