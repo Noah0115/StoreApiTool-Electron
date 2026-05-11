@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Store 接口小工具</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div>
+        <h1>Store 接口小工具</h1>
+        <p>输入 Microsoft Store 商品链接，查询 <code>store.rg-adguard.net/api/GetFiles</code> 返回的安装文件列表。</p>
+        <div class="author-line">by Noah0115</div>
+        <section class="guide-card" aria-label="使用教程">
+          <div class="guide-head">
+            <h2>使用教程</h2>
+            <p>照着这 4 步走，很快就能拿到安装文件直链。</p>
+          </div>
+          <div class="guide-steps">
+            <article class="guide-step">
+              <span class="guide-step-number">1</span>
+              <div>
+                <h3>打开商店</h3>
+                <p>点击“打开微软商店”，进入 Microsoft Store 商品页面。</p>
+              </div>
+            </article>
+            <article class="guide-step">
+              <span class="guide-step-number">2</span>
+              <div>
+                <h3>复制链接</h3>
+                <p>找到目标应用、游戏或扩展，把页面地址复制出来。</p>
+              </div>
+            </article>
+            <article class="guide-step">
+              <span class="guide-step-number">3</span>
+              <div>
+                <h3>粘贴查询</h3>
+                <p>将链接粘贴到上方输入框，按需选择 Ring、语言和地区。</p>
+              </div>
+            </article>
+            <article class="guide-step">
+              <span class="guide-step-number">4</span>
+              <div>
+                <h3>下载文件</h3>
+                <p>点击“查询”获取文件列表，再按需要打开对应下载链接。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="form-grid">
+        <div class="field field-url">
+          <label for="url">商店链接</label>
+          <input id="url" value="https://apps.microsoft.com/detail/9plm9xgg6vks?hl=zh-CN" placeholder="https://apps.microsoft.com/detail/..." />
+        </div>
+        <div class="field">
+          <label for="ring">Ring</label>
+          <select id="ring">
+            <option value="Retail" selected>Retail</option>
+            <option value="RP">RP</option>
+            <option value="WIS">WIS</option>
+            <option value="WIF">WIF</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="lang">语言</label>
+          <input id="lang" value="zh-CN" />
+        </div>
+        <div class="field">
+          <label for="gl">地区</label>
+          <input id="gl" value="CN" />
+        </div>
+        <div class="field action">
+          <div class="action-group">
+            <button id="open-store" class="secondary-button" type="button">打开微软商店</button>
+            <button id="submit" type="button">查询</button>
+          </div>
+        </div>
+      </div>
+      <div id="status" class="status"></div>
+    </section>
+
+    <section id="result" class="panel result-panel hidden">
+      <div class="meta">
+        <div class="pill">文件数: <strong id="count">0</strong></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>文件名</th>
+              <th>过期时间</th>
+              <th>SHA-1</th>
+              <th>大小</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="./renderer.js"></script>
+</body>
+</html>
