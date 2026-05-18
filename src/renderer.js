@@ -5,7 +5,6 @@ const resultEl = document.getElementById("result");
 const countEl = document.getElementById("count");
 const tbody = document.getElementById("tbody");
 const urlInput = document.getElementById("url");
-const MICROSOFT_STORE_HOME = "https://apps.microsoft.com/home?hl=zh-CN&gl=CN";
 
 function setStatus(message, kind = "") {
   statusEl.textContent = message;
@@ -46,19 +45,19 @@ async function queryFiles() {
   };
 
   if (!payload.url) {
-    setStatus("请先输入商店链接。", "error");
+    setStatus("请输入 Microsoft Store 链接。", "error");
     return;
   }
 
   submitButton.disabled = true;
-  setStatus("正在请求接口...", "");
+  setStatus("正在获取文件列表...", "");
 
   try {
     const data = await window.storeApi.queryFiles(payload);
     countEl.textContent = String(data.files.length);
     tbody.innerHTML = buildRows(data.files);
     resultEl.classList.remove("hidden");
-    setStatus(`查询完成，拿到 ${data.files.length} 个文件。`, "ok");
+    setStatus(`查询完成，共找到 ${data.files.length} 个文件。`, "ok");
   } catch (error) {
     setStatus(error.message || "请求失败。", "error");
   } finally {
@@ -68,14 +67,16 @@ async function queryFiles() {
 
 async function openStoreEntry() {
   const rawUrl = urlInput.value.trim();
-  const targetUrl = rawUrl || MICROSOFT_STORE_HOME;
+  const lang = document.getElementById("lang").value.trim() || "zh-CN";
+  const gl = document.getElementById("gl").value.trim() || "CN";
+  const targetUrl = rawUrl || `https://apps.microsoft.com/home?hl=${encodeURIComponent(lang)}&gl=${encodeURIComponent(gl)}`;
   await window.storeApi.openExternal(targetUrl);
 }
 
 submitButton.addEventListener("click", queryFiles);
 openStoreButton.addEventListener("click", () => {
   openStoreEntry().catch((error) => {
-    setStatus(error.message || "打开微软商店失败。", "error");
+    setStatus(error.message || "打开 Microsoft Store 失败。", "error");
   });
 });
 

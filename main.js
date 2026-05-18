@@ -1,9 +1,37 @@
 const { app, BrowserWindow, ipcMain, shell } = require("electron");
+const fs = require("node:fs");
 const path = require("node:path");
 
 const UPSTREAM_URL = "https://store.rg-adguard.net/api/GetFiles";
 
+if (!app.isPackaged) {
+  try {
+    require("electron-reloader")(module, {
+      debug: false,
+      watchRenderer: true
+    });
+  } catch (error) {
+    console.warn("Hot reload unavailable:", error.message);
+  }
+}
+
+function resolveWindowIcon() {
+  const candidates = process.platform === "win32"
+    ? ["icon.ico", "icon-512.png"]
+    : ["icon-512.png", "icon.ico"];
+
+  for (const fileName of candidates) {
+    const assetPath = path.join(__dirname, "assets", fileName);
+    if (fs.existsSync(assetPath)) {
+      return assetPath;
+    }
+  }
+
+  return undefined;
+}
+
 function createWindow() {
+  const icon = resolveWindowIcon();
   const win = new BrowserWindow({
     width: 1320,
     height: 900,
@@ -11,6 +39,7 @@ function createWindow() {
     minHeight: 760,
     backgroundColor: "#f4f6fb",
     autoHideMenuBar: true,
+    icon,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
@@ -96,6 +125,10 @@ ipcMain.handle("open-external", async (_event, url) => {
 });
 
 app.whenReady().then(() => {
+  if (process.platform === "win32") {
+    app.setAppUserModelId("com.noah0115.storeapitool");
+  }
+
   createWindow();
 
   app.on("activate", () => {

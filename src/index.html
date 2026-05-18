@@ -3,48 +3,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Store 接口小工具</title>
+  <title>StoreApiTool</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <div class="wrap">
     <header class="hero">
       <div>
-        <h1>Store 接口小工具</h1>
-        <p>输入 Microsoft Store 商品链接，查询 <code>store.rg-adguard.net/api/GetFiles</code> 返回的安装文件列表。</p>
-        <div class="author-line">by Noah0115</div>
+        <h1>微软商店应用安装包下载工具</h1>
+        <p>Microsoft Store 安装文件下载地址查询工具。输入应用链接后，即可查看对应的安装文件列表。</p>
+        <div class="author-line">作者：Noah0115</div>
         <section class="guide-card" aria-label="使用教程">
           <div class="guide-head">
-            <h2>使用教程</h2>
-            <p>照着这 4 步走，很快就能拿到安装文件直链。</p>
+            <h2>使用说明</h2>
+            <p>按照以下步骤操作，即可获取应用、游戏或扩展的安装文件下载地址。</p>
           </div>
           <div class="guide-steps">
             <article class="guide-step">
               <span class="guide-step-number">1</span>
               <div>
-                <h3>打开商店</h3>
-                <p>点击“打开微软商店”，进入 Microsoft Store 商品页面。</p>
+                <h3>打开 Microsoft Store</h3>
+                <p>点击“打开 Microsoft Store”，进入目标应用页面。</p>
               </div>
             </article>
             <article class="guide-step">
               <span class="guide-step-number">2</span>
               <div>
-                <h3>复制链接</h3>
-                <p>找到目标应用、游戏或扩展，把页面地址复制出来。</p>
+                <h3>复制应用链接</h3>
+                <p>复制当前应用页面的完整链接。</p>
               </div>
             </article>
             <article class="guide-step">
               <span class="guide-step-number">3</span>
               <div>
-                <h3>粘贴查询</h3>
-                <p>将链接粘贴到上方输入框，按需选择 Ring、语言和地区。</p>
+                <h3>提交查询</h3>
+                <p>将链接粘贴到输入框，并根据需要选择发布通道、语言和地区。</p>
               </div>
             </article>
             <article class="guide-step">
               <span class="guide-step-number">4</span>
               <div>
-                <h3>下载文件</h3>
-                <p>点击“查询”获取文件列表，再按需要打开对应下载链接。</p>
+                <h3>获取下载地址</h3>
+                <p>点击“查询文件”查看安装文件列表，并打开所需文件的下载地址。</p>
               </div>
             </article>
           </div>
@@ -53,13 +53,50 @@
     </header>
 
     <section class="panel">
+      <details class="channel-guide" aria-label="发布通道说明">
+        <summary class="channel-guide-summary">
+          <span class="channel-guide-title">发布通道说明</span>
+          <span class="channel-guide-brief">默认建议选择 Retail，其他选项主要用于不同阶段的预发布版本。</span>
+        </summary>
+        <div class="channel-guide-grid">
+          <article class="channel-guide-item">
+            <div class="channel-guide-item-head">
+              <span class="channel-guide-code">Retail</span>
+              <h4>正式发布</h4>
+            </div>
+            <p>面向公开发布版本，适用于大多数应用查询与下载场景。</p>
+          </article>
+          <article class="channel-guide-item">
+            <div class="channel-guide-item-head">
+              <span class="channel-guide-code">RP</span>
+              <h4>发布预览</h4>
+            </div>
+            <p>接近正式发布，适合提前查看即将上线的版本更新。</p>
+          </article>
+          <article class="channel-guide-item">
+            <div class="channel-guide-item-head">
+              <span class="channel-guide-code">WIS</span>
+              <h4>稳定预览</h4>
+            </div>
+            <p>比发布预览更早，可用于查询较早阶段且相对稳定的预发布内容。</p>
+          </article>
+          <article class="channel-guide-item">
+            <div class="channel-guide-item-head">
+              <span class="channel-guide-code">WIF</span>
+              <h4>前沿预览</h4>
+            </div>
+            <p>预览阶段更靠前，通常用于获取更新更早、变化更快的版本。</p>
+          </article>
+        </div>
+      </details>
+
       <div class="form-grid">
         <div class="field field-url">
-          <label for="url">商店链接</label>
+          <label for="url">Microsoft Store 链接</label>
           <input id="url" value="https://apps.microsoft.com/detail/9plm9xgg6vks?hl=zh-CN" placeholder="https://apps.microsoft.com/detail/..." />
         </div>
         <div class="field">
-          <label for="ring">Ring</label>
+          <label for="ring">发布通道</label>
           <select id="ring">
             <option value="Retail" selected>Retail</option>
             <option value="RP">RP</option>
@@ -67,9 +104,16 @@
             <option value="WIF">WIF</option>
           </select>
         </div>
-        <div class="field">
+        <div class="field field-lang">
           <label for="lang">语言</label>
-          <input id="lang" value="zh-CN" />
+          <select id="lang">
+            <option value="zh-CN" selected>简体中文 (zh-CN)</option>
+            <option value="en-US">English (en-US)</option>
+            <option value="ja-JP">日本语 (ja-JP)</option>
+            <option value="ko-KR">한국어 (ko-KR)</option>
+            <option value="de-DE">Deutsch (de-DE)</option>
+            <option value="fr-FR">Français (fr-FR)</option>
+          </select>
         </div>
         <div class="field">
           <label for="gl">地区</label>
@@ -77,8 +121,8 @@
         </div>
         <div class="field action">
           <div class="action-group">
-            <button id="open-store" class="secondary-button" type="button">打开微软商店</button>
-            <button id="submit" type="button">查询</button>
+            <button id="open-store" class="secondary-button" type="button">打开 Microsoft Store</button>
+            <button id="submit" type="button">查询文件</button>
           </div>
         </div>
       </div>
@@ -87,7 +131,7 @@
 
     <section id="result" class="panel result-panel hidden">
       <div class="meta">
-        <div class="pill">文件数: <strong id="count">0</strong></div>
+        <div class="pill">文件数量: <strong id="count">0</strong></div>
       </div>
 
       <div class="table-wrap">
@@ -96,7 +140,7 @@
             <tr>
               <th>文件名</th>
               <th>过期时间</th>
-              <th>SHA-1</th>
+              <th>校验值 (SHA-1)</th>
               <th>大小</th>
               <th>操作</th>
             </tr>

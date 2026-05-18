@@ -13,7 +13,8 @@
   },
   "devDependencies": {
     "electron": "^37.1.0",
-    "electron-builder": "^26.0.12"
+    "electron-builder": "^26.0.12",
+    "electron-reloader": "^1.2.3"
   },
   "build": {
     "appId": "com.noah0115.storeapitool",
@@ -24,6 +25,7 @@
     },
     "artifactName": "StoreApiTool.${ext}",
     "files": [
+      "assets/**/*",
       "main.js",
       "preload.js",
       "src/**/*",
