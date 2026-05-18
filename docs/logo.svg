@@ -1,0 +1,45 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="44" y1="28" x2="252" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="0.56" stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#0EA5E9"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="78" y1="62" x2="210" y2="214" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7DD3FC"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <filter id="shadow" x="4" y="8" width="304" height="304" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0F172A" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <rect x="28" y="28" width="256" height="256" rx="76" fill="url(#bg)"/>
+  </g>
+
+  <circle cx="226" cy="76" r="34" fill="#FFFFFF" fill-opacity="0.10"/>
+  <circle cx="92" cy="238" r="46" fill="#FFFFFF" fill-opacity="0.06"/>
+
+  <rect x="52" y="62" width="208" height="52" rx="21" fill="url(#accent)"/>
+  <rect x="60" y="88" width="192" height="168" rx="28" fill="#F8FAFC"/>
+  <path d="M60 114H252" stroke="#D7E4F8" stroke-width="8"/>
+
+  <g transform="rotate(-12 156 153)" stroke="#1D4ED8" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <rect x="85" y="118" width="82" height="40" rx="20"/>
+    <rect x="142" y="154" width="82" height="40" rx="20"/>
+    <path d="M143 156H168"/>
+  </g>
+
+  <path d="M156 138V198" stroke="#0F172A" stroke-width="18" stroke-linecap="round"/>
+  <path d="M126 181L156 211L186 181" stroke="#0F172A" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="86" y="220" width="38" height="10" rx="5" fill="#CBD5E1"/>
+  <rect x="136" y="220" width="38" height="10" rx="5" fill="#CBD5E1"/>
+  <rect x="186" y="220" width="38" height="10" rx="5" fill="#CBD5E1"/>
+
+  <text x="336" y="152" fill="#0F172A" font-family="Segoe UI, Arial, sans-serif" font-size="88" font-weight="700" letter-spacing="0">StoreApiTool</text>
+  <text x="340" y="218" fill="#475569" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="500" letter-spacing="0">Direct Microsoft Store file link lookup tool</text>
+  <rect x="342" y="248" width="92" height="34" rx="17" fill="#DBEAFE"/>
+  <text x="369" y="271" fill="#1D4ED8" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="0">Electron</text>
+</svg>

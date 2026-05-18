@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/logo.svg" alt="StoreApiTool logo" width="560" />
+</p>
+
 # StoreApiTool-Electron
 
 一个基于 Electron 的 Microsoft Store 文件直链查询工具。
