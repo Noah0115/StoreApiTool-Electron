@@ -19,7 +19,8 @@
     "appId": "com.noah0115.storeapitool",
     "productName": "StoreApiTool",
     "directories": {
-      "output": "release"
+      "output": "release",
+      "buildResources": "assets"
     },
     "artifactName": "StoreApiTool.${ext}",
     "files": [
@@ -29,6 +30,7 @@
       "package.json"
     ],
     "win": {
+      "icon": "assets/icon.ico",
       "target": [
         {
           "target": "portable",
