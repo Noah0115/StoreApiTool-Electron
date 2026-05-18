@@ -13,4 +13,4 @@ pnpm-debug.log*
 
 .env
 .env.*
-
+.codex/
